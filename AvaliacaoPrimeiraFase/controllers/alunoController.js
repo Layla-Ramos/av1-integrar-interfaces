@@ -27,16 +27,26 @@ const criarAluno = async (req, res) => {
 };
 
 const obterTodosAlunos = async (req, res) => {
+  try {
   const alunos = await Aluno.find().populate('perfil');
-  res.json(alunos);
+  res.status(200).json(alunos);
+}catch (error) {
+  res.status(500).json({ error: "Não foi possível retornar os launos" });
+}
 };
 
 const deletarAluno = async (req, res) => {
   try {
   const { id } = req.params;
 
+  //verifica se existe esse aluno
+    const aluno = await Aluno.findById(id);
+    if (!aluno) {
+      return res.status(404).json({ message: "Aluno não encontrado" });
+    }
+
   await Aluno.deleteOne({ _id: id });
-  res.json({ message: 'Aluno removido com sucesso!' });
+  res.status(200).json({ message: 'Aluno removido com sucesso!' });
   }catch (error) {
     res.status(500).json({ error: "Não foi possível deletar o aluno!" });
   }
@@ -48,6 +58,10 @@ const editarAluno = async (req, res) => {
   const { nome, idade } = req.body;
 
   let aluno = await Aluno.findByIdAndUpdate(id, { nome, idade });
+
+  if (!aluno) {
+    return res.status(404).json({ message: "Aluno não encontrado" });
+  }
   res.status(200).json({
     message: 'Aluno atualizado com sucesso!',
     aluno,
