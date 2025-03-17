@@ -10,3 +10,6 @@ let disciplinaSchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model("Disciplina", disciplinaSchema);
+
+// Uma disciplina pode ser associada a várias tarefas
+  // Um para muitos

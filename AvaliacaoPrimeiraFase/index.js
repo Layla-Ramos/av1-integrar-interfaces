@@ -1,6 +1,9 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const db = require("./database/db.js");
+const app = express();
 
+const admRoutes = require("./routes/admRoutes.js");
 const alunoRoutes = require("./routes/alunoRoutes.js");
 const disciplinaRoutes = require("./routes/disciplinaRoutes.js");
 const perfilRoutes = require("./routes/perfilRoutes.js");
@@ -8,11 +11,10 @@ const professorRoutes = require("./routes/professorRoutes.js");
 const tarefaRoutes = require("./routes/tarefaRoutes.js");
 const turmaRoutes = require("./routes/turmaRoutes.js");
 
-const db = require("./database/db.js");
 
-const app = express();
 app.use(bodyParser.json());
 
+app.use("/app", admRoutes);
 app.use("/app", alunoRoutes);
 app.use("/app", disciplinaRoutes);
 app.use("/app", perfilRoutes);

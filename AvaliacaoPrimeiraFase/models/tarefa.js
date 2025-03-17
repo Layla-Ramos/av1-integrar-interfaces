@@ -12,3 +12,9 @@ let tarefaSchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model("Tarefa", tarefaSchema);
+
+//Muitas tarefa podem estar associadas a um aluno 
+  // Muitos para um
+
+//Muitas tarefas podem estar associada a muitas disciplinas
+  // Muitos para muitos

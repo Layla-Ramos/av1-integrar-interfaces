@@ -7,3 +7,6 @@ let professorSchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model("Professor", professorSchema);
+
+// Um professor pode estar associado a várias disciplinas
+  // Um para muitos

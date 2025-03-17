@@ -31,7 +31,7 @@ const obterTodosAlunos = async (req, res) => {
   const alunos = await Aluno.find().populate('perfil');
   res.status(200).json(alunos);
 }catch (error) {
-  res.status(500).json({ error: "Não foi possível retornar os launos" });
+  res.status(500).json({ error: "Não foi possível retornar os alunos" });
 }
 };
 

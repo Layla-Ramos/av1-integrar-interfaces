@@ -7,3 +7,9 @@ let turmaSchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model("Turma", turmaSchema);
+
+//Uma turma pode estar associada a vários alunos 
+  //Um para muitos
+
+//Várias turmas podem estar associadas a um professor
+  //Muitos para um

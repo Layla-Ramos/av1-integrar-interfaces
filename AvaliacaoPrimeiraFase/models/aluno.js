@@ -7,3 +7,6 @@ let alunoSchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model("Aluno", alunoSchema);
+
+// Um aluno está associado a um perfil
+  // Um para um
